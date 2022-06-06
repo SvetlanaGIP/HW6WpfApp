@@ -22,7 +22,7 @@ namespace HW6WpfApp
             rainy,
             snowy
         }
-    class WeatherControl: DependecyObject
+    class WeatherControl: DependencyObject
     {
         private string windDirection;
         private int windSpeed;
@@ -35,7 +35,7 @@ namespace HW6WpfApp
             this.WindSpeed = windSp;
             this.Precipitation = precipitation;
         }
-        public static readonly DependecyProperty TempProperty;
+        public static readonly DependencyProperty TempProperty;
         public int Temp 
         {
             get => (int)GetValue(TempProperty);
@@ -46,7 +46,7 @@ namespace HW6WpfApp
 
         static WeatherControl()
         {
-            TempProperty = DependecyProperty.Register(
+            TempProperty => DependencyProperty.Register(
              nameof(Temp),
              typeof(int),
              typeof(WeatherControl),
@@ -71,7 +71,7 @@ namespace HW6WpfApp
             }
             
         }
-        private static object CoerceTemp(DependecyObject d, object baseValue)
+        private static object CoerceTemp(DependencyObject d, object baseValue)
         {
             int v = (int)baseValue;
             if (v>=-50 && v<=50)
